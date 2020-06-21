@@ -1,2 +1,7 @@
 /node_modules
 /.vscode
+
+src/database/database.sqlite
+
+yarn.lock
+package-lock.json
