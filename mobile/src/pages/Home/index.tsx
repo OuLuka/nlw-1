@@ -6,7 +6,6 @@ import {
   View,
   Image,
   StyleSheet,
-  TextInput,
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
@@ -73,58 +72,64 @@ const Home = () => {
   }
 
   return (
-    <ImageBackground
-      source={require("../../assets/home-background.png")}
-      style={styles.container}
-      imageStyle={{ width: 274, height: 368 }}
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === "ios" ? "padding" : undefined}
     >
-      <View style={styles.main}>
-        <Image source={require("../../assets/logo.png")} />
-        <View>
-          <Text style={styles.title}>
-            Seu marketplace de coleta de resíduos
-          </Text>
-          <Text style={styles.description}>
-            Ajudamos pessoas a encontrarem pontos de coleta de forma eficiente.
-          </Text>
-        </View>
-      </View>
-
-      <View style={styles.main}>
-        <RNPickerSelect
-          placeholder={{
-            label: "Selecione o estado",
-            value: 0,
-          }}
-          onValueChange={(value) => handleSelectedUf(value)}
-          items={ufs.map((uf) => ({
-            label: uf,
-            value: uf,
-          }))}
-        />
-
-        <RNPickerSelect
-          placeholder={{
-            label: "Selecione a cidade",
-            value: 0,
-          }}
-          onValueChange={(value) => handleSelectedCity(value)}
-          items={cities.map((city) => ({
-            label: city,
-            value: city,
-          }))}
-        />
-
-        <RectButton style={styles.button} onPress={handleNavigateToPoints}>
-          <View style={styles.buttonIcon}>
-            <Text>
-              <Icon name="arrow-right" color="#FFF" size={24} />
+      <ImageBackground
+        source={require("../../assets/home-background.png")}
+        style={styles.container}
+        imageStyle={{ width: 274, height: 368 }}
+      >
+        <View style={styles.main}>
+          <Image source={require("../../assets/logo.png")} />
+          <View>
+            <Text style={styles.title}>
+              Seu marketplace de coleta de resíduos
+            </Text>
+            <Text style={styles.description}>
+              Ajudamos pessoas a encontrarem pontos de coleta de forma
+              eficiente.
             </Text>
           </View>
-          <Text style={styles.buttonText}>Entrar</Text>
-        </RectButton>
-      </View>
-    </ImageBackground>
+        </View>
+
+        <View style={styles.main}>
+          <RNPickerSelect
+            placeholder={{
+              label: "Selecione o estado",
+              value: 0,
+            }}
+            onValueChange={(value) => handleSelectedUf(value)}
+            items={ufs.map((uf) => ({
+              label: uf,
+              value: uf,
+            }))}
+          />
+
+          <RNPickerSelect
+            placeholder={{
+              label: "Selecione a cidade",
+              value: 0,
+            }}
+            onValueChange={(value) => handleSelectedCity(value)}
+            items={cities.map((city) => ({
+              label: city,
+              value: city,
+            }))}
+          />
+
+          <RectButton style={styles.button} onPress={handleNavigateToPoints}>
+            <View style={styles.buttonIcon}>
+              <Text>
+                <Icon name="arrow-right" color="#FFF" size={24} />
+              </Text>
+            </View>
+            <Text style={styles.buttonText}>Entrar</Text>
+          </RectButton>
+        </View>
+      </ImageBackground>
+    </KeyboardAvoidingView>
   );
 };
 
