@@ -3,5 +3,11 @@
 
 src/database/database.sqlite
 
+uploads/*.jpeg
+uploads/*.jpg
+uploads/*.png
+
+.DS_Store
+
 yarn.lock
 package-lock.json
